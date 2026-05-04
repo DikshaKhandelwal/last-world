@@ -99,7 +99,7 @@ export default function PipelineScreen({ level, inputData, sessionId, onComplete
           <span style={{ display: 'inline-block', width: '6px', height: '1em', backgroundColor: 'var(--amber)', animation: 'blink 1s step-end infinite', marginLeft: '6px', verticalAlign: 'bottom' }} />
         </div>
         
-        <div style={{
+        <div className="scrollbar-hidden" style={{
           flex: 1,
           backgroundColor: 'var(--deep)',
           border: '1px solid var(--border)',
@@ -126,7 +126,7 @@ export default function PipelineScreen({ level, inputData, sessionId, onComplete
       {/* RIGHT COLUMN: STATS / PROOF */}
       <div style={{ width: '30%', display: 'flex', flexDirection: 'column', minHeight: 0 }}>
         <StruggleMeter confidence={confidence} attempts={stats.inferences} retries={retries} stats={stats} />
-        <div style={{ marginTop: '24px', flex: 1, minHeight: 0, overflowY: 'auto', paddingRight: '6px' }}>
+        <div className="scrollbar-hidden" style={{ marginTop: '24px', flex: 1, minHeight: 0, overflowY: 'auto', paddingRight: '6px' }}>
         {phase === 'running' && (
           <div style={{ border: '1px solid var(--border)', padding: '12px', background: 'var(--deep)' }}>
             <div style={{ color: 'var(--amber)', fontSize: 'var(--text-xs)', marginBottom: '6px' }}>
