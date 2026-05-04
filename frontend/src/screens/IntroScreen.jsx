@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const INTRO_LINES = [
@@ -21,6 +21,16 @@ export default function IntroScreen({ onComplete }) {
   const [showNext3, setShowNext3] = useState(false);
   const [showSubLine, setShowSubLine] = useState(false);
   const [isFlashing, setIsFlashing] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Play background voice narration
+    if (audioRef.current) {
+      audioRef.current.volume = 0.6;
+      audioRef.current.play().catch(err => console.log('Audio autoplay blocked:', err));
+    }
+  }, []);
 
   useEffect(() => {
     if (currentLineIndex >= INTRO_LINES.length) {
@@ -68,6 +78,15 @@ export default function IntroScreen({ onComplete }) {
 
   return (
     <>
+      {/* Background Voice Audio */}
+      <audio
+        ref={audioRef}
+        src="/audio/intro-narration.mp3"
+        loop={false}
+        muted={isMuted}
+        style={{ display: 'none' }}
+      />
+
       <div style={{
         width: '100%',
         height: '100%',
@@ -80,6 +99,33 @@ export default function IntroScreen({ onComplete }) {
         color: 'var(--text-primary)',
         textAlign: 'center'
       }}>
+        {/* Mute Button */}
+        <button
+          onClick={() => {
+            setIsMuted(!isMuted);
+            if (audioRef.current) {
+              audioRef.current.muted = !isMuted;
+            }
+          }}
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            zIndex: 1000,
+            backgroundColor: 'rgba(255,255,255,0.1)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            color: 'var(--text-primary)',
+            padding: '8px 12px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '12px',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.2)'}
+          onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+        >
+          {isMuted ? '🔇 Unmute' : '🔊 Mute'}
+        </button>
         <AnimatePresence mode='wait'>
           {currentLineIndex < INTRO_LINES.length && (
             <motion.div
