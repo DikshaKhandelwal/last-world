@@ -1,0 +1,113 @@
+.pipeline-shell {
+  background: rgba(12, 13, 18, 0.82);
+  border: 1px solid var(--grid);
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+  padding: 20px;
+}
+
+.pipeline-title {
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+
+.pipeline-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.pipeline-step {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid rgba(233, 226, 208, 0.08);
+  background: rgba(7, 8, 12, 0.78);
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.pipeline-step.running {
+  border-color: rgba(242, 179, 90, 0.65);
+  background: rgba(242, 179, 90, 0.08);
+  transform: translateX(4px);
+}
+
+.pipeline-step.retry {
+  border-color: rgba(255, 106, 106, 0.75);
+  background: rgba(255, 106, 106, 0.08);
+  animation: shake 0.4s linear 1;
+}
+
+.pipeline-step.success {
+  border-color: rgba(126, 240, 193, 0.55);
+  background: rgba(126, 240, 193, 0.06);
+}
+
+.pipeline-step.failed {
+  border-color: rgba(255, 106, 106, 0.9);
+  background: rgba(255, 106, 106, 0.12);
+}
+
+.step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(233, 226, 208, 0.2);
+  margin-top: 3px;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.pipeline-step.running .step-dot {
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(242, 179, 90, 0.7);
+}
+
+.pipeline-step.retry .step-dot {
+  background: var(--danger);
+  box-shadow: 0 0 16px rgba(255, 106, 106, 0.8);
+}
+
+.pipeline-step.success .step-dot {
+  background: var(--ok);
+  box-shadow: 0 0 14px rgba(126, 240, 193, 0.7);
+}
+
+.pipeline-step.failed .step-dot {
+  background: var(--danger);
+}
+
+.step-content {
+  display: grid;
+  gap: 4px;
+}
+
+.step-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.step-meta,
+.retry-counter {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.retry-counter {
+  color: var(--danger);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
+}

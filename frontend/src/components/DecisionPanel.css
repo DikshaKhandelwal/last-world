@@ -1,0 +1,46 @@
+.decision-panel {
+  background: rgba(12, 13, 18, 0.82);
+  border: 1px solid rgba(255, 106, 106, 0.4);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+  display: grid;
+  gap: 14px;
+}
+
+.decision-title {
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--danger);
+}
+
+.decision-panel p {
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.decision-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.decision-btn {
+  border: 1px solid rgba(233, 226, 208, 0.14);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink);
+  padding: 10px 14px;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.decision-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}

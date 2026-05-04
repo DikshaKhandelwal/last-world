@@ -1,0 +1,15 @@
+region_id,customer_age,weekly_aid_kg,clinic_visits,status
+101,34,420,3,ok
+102,29,390,2,ok
+103,41,405,3,ok
+104,36,399,2,ok
+105,38,402,2,ok
+106,27,410,2,ok
+107,33,405,3,ok
+108,45,398,2,ok
+109,-3,415,1,err_value
+110,900,412,2,err_value
+111,0,380,0,err_value
+112,31,1500,2,err_value
+113,28,407,-1,err_value
+114,39,401,3,ok

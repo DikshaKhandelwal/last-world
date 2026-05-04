@@ -1,0 +1,43 @@
+.struggle-meter {
+  background: rgba(12, 13, 18, 0.82);
+  border: 1px solid var(--grid);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+  display: grid;
+  gap: 12px;
+}
+
+.meter-label {
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+
+.meter-bar {
+  height: 12px;
+  background: rgba(233, 226, 208, 0.08);
+  overflow: hidden;
+  border: 1px solid rgba(233, 226, 208, 0.08);
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--danger), #ffb26b, var(--ok));
+  transition: width 0.35s ease;
+}
+
+.meter-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.meter-stats strong {
+  color: var(--ink);
+}
